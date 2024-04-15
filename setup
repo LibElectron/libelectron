@@ -1,0 +1,17 @@
+#!/bin/bash
+#Automated Setup script for libelectron.
+_MachineType=`uname -m`
+_electron=29.1.0
+_electroncastlabs=v27.3.8+wvcus
+_ecm=3.6.1
+_electron_ce=3.10.1
+_fs_extra=11.2.0
+
+    if [[ ${_MachineType} == aarch64 ]]; then
+      npm i electron@$_electron electron-context-menu@$_ecm electron-chrome-extensions@$_electron_ce fs-extra@$_fs_extra
+      #Ignoring Electron Castlab until it is avaliable
+fi
+if [[ ${_MachineType} == x86_64 ]]; then
+      npm i electron@$_electron electron-context-menu@$_ecm electron-chrome-extensions@$_electron_ce fs-extra@$_fs_extra
+      npm install "https://github.com/castlabs/electron-releases#$_electroncastlabs" --save-dev
+fi
